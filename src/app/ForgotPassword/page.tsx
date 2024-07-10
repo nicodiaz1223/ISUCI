@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { sendResetPasswordEmail } from '../../services/passwordService';
+import React from 'react';
+import GoogleTranslate from '@/components/GoogleTranslate';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState<string>('');
@@ -37,6 +39,7 @@ const ForgotPassword = () => {
               <span className="text-blue-600">IS</span>
               <span className="text-black">UC</span>
               <span className="text-red-600">I</span>
+              <GoogleTranslate/>
             </div>
             <div className="py-10">
               <h2 className="text-3xl font-bold mb-2 text-blue-600">Restablecer Contraseña</h2>
