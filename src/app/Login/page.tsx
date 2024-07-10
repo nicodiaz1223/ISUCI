@@ -6,6 +6,7 @@ import { FaRegCircleUser } from "react-icons/fa6";
 import { MdLockOutline } from "react-icons/md";
 import React from "react";
 import GoogleTranslate from '../../components/GoogleTranslate';
+import RecaptchaComponent from '../../components/RecaptchaComponent'; // Importa el componente de reCAPTCHA
 
 const Login = () => {
   const [usuario, setUsuario] = useState<string>('');
@@ -66,7 +67,6 @@ const Login = () => {
                 <GoogleTranslate/> 
               </div>
               <div className="py-10">
-
                 <h2 className="text-3xl font-bold mb-2 text-blue-600">Iniciar Sesión</h2>
                 <div className="border-2 w-10 border-blue-600 inline-block mb-2"></div>
                 <form onSubmit={handleSubmit} className="flex flex-col items-center w-full">
@@ -92,21 +92,13 @@ const Login = () => {
                       required
                     />
                   </div>
-                  <div className="bg-gray-100 w-64 p-2 flex items-center mb-3">
-                    <input
-                      type="text"
-                      placeholder="Captcha Token"
-                      value={recaptchaToken}
-                      onChange={(e) => setRecaptchaToken(e.target.value)}
-                      className="bg-gray-100 outline-none text-sm flex-1"
-                    />
-                  </div>
+                  <RecaptchaComponent onVerify={setRecaptchaToken} /> {/* Añadir reCAPTCHA */}
                   <div className="flex justify-between w-64 mb-5">
                     <label className="flex items-center text-xs">
                       <input type="checkbox" name="remember" className="mr-1" />
                       Recordar contraseña
                     </label>
-                    <a href="#" className="text-xs font-bold text-blue-600">Olvidó su contraseña?</a>
+                    <a href="#" className="text-xs font-bold text-blue-600" onClick={() => router.push('/ForgotPassword')}>Olvidó su contraseña?</a>
                   </div>
                   <button
                     type="submit"
